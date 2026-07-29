@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ | BizEat 飲食店パートナー募集</title>
+<meta name="description" content="BizEatへの資料請求・加盟申し込み・掲載についてのご相談はこちらのフォームから承ります。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="header" id="siteHeader">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-logo">
+        <img src="assets/logo-icon.svg" alt="" width="24" height="24">
+        <img src="assets/logo-wordmark.svg" alt="BizEat" width="74" height="20">
+      </span>
+      <span class="brand-pill">飲食店パートナー募集</span>
+    </a>
+
+    <nav class="nav" id="primaryNav" aria-label="メインナビゲーション">
+      <a href="index.html#about">BizEatとは</a>
+      <a href="index.html#features">特徴</a>
+      <a href="index.html#compare">他媒体との違い</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+
+    <div class="header-ctas">
+      <a href="index.html" class="btn btn-secondary btn-sm">← LPへ戻る</a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="モバイルナビゲーション">
+    <a href="index.html#about">BizEatとは</a>
+    <a href="index.html#features">特徴</a>
+    <a href="index.html#compare">他媒体との違い</a>
+    <a href="index.html#faq">FAQ</a>
+    <div class="mobile-nav-ctas">
+      <a href="index.html" class="btn btn-secondary">← LPへ戻る</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="contact-hero">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">
+          <img src="assets/line.svg" alt="" class="eyebrow-line" width="40" height="2">
+          <span>Contact</span>
+        </div>
+        <h1 class="section-title section-title--center">お問い合わせ</h1>
+        <p class="section-lead">資料請求・加盟申し込み・掲載についてのご相談を、下記フォームより承っております。内容を確認のうえ、担当者よりご連絡いたします。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-body">
+    <div class="container contact-layout">
+
+      <aside class="contact-recap" data-reveal>
+        <h2>BizEatパートナー加盟の3つの安心</h2>
+        <ul class="contact-recap-list">
+          <li>
+            <span class="request-num">1</span>
+            <span>掲載料・月額費用は完全無料。固定費のリスクなく始められます。</span>
+          </li>
+          <li>
+            <span class="request-num">2</span>
+            <span>予約枠は店舗様主導で調整可能。既存予約を妨げません。</span>
+          </li>
+          <li>
+            <span class="request-num">3</span>
+            <span class="hero-visual-card-inline">
+              <img src="assets/icon-headphones.svg" alt="" width="16" height="16">
+              有人サポート体制で加盟後も安心です。
+            </span>
+          </li>
+        </ul>
+        <p class="contact-recap-note">ご不明な点はお問い合わせ種別を「掲載について相談する」でお選びのうえ、お気軽にご連絡ください。</p>
+      </aside>
+
+      <div class="form-card" id="formPanel" data-reveal data-reveal-delay="100ms">
+        <form id="inquiryForm" action="https://formspree.io/f/maqrvbpn" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="【BizEat】お問い合わせがありました">
+
+          <div class="field">
+            <label for="inquiryType">お問い合わせ種別 <span class="req">必須</span></label>
+            <select id="inquiryType" name="inquiryType" required>
+              <option value="" disabled selected>選択してください</option>
+              <option value="資料請求">資料請求</option>
+              <option value="加盟申し込み">加盟申し込み</option>
+              <option value="掲載について相談する">掲載について相談する</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="storeName">会社名・店舗名 <span class="req">必須</span></label>
+              <input type="text" id="storeName" name="storeName" placeholder="例）BizEat銀座店" required>
+            </div>
+            <div class="field">
+              <label for="contactName">ご担当者名 <span class="req">必須</span></label>
+              <input type="text" id="contactName" name="contactName" placeholder="例）山田 太郎" required>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">メールアドレス <span class="req">必須</span></label>
+              <input type="email" id="email" name="email" placeholder="example@bizeat.jp" required>
+            </div>
+            <div class="field">
+              <label for="tel">電話番号</label>
+              <input type="tel" id="tel" name="tel" placeholder="03-1234-5678">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">ご要望・ご質問</label>
+            <textarea id="message" name="message" rows="4" placeholder="業態や店舗数、ご質問などございましたらご記入ください"></textarea>
+          </div>
+
+          <label class="checkbox-field">
+            <input type="checkbox" id="agree" name="agree" required>
+            <span><a href="#">プライバシーポリシー</a>に同意する <span class="req">必須</span></span>
+          </label>
+
+          <p class="form-error" id="formError" hidden>送信に失敗しました。時間をおいて再度お試しいただくか、お電話にてご連絡ください。</p>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-submit" id="submitBtn">
+            <span class="btn-label">この内容で送信する</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="form-card thanks-panel" id="thanksPanel" hidden>
+        <div class="thanks-icon" aria-hidden="true">✓</div>
+        <h2>お問い合わせありがとうございます</h2>
+        <p><span id="thanksType">お問い合わせ</span>の内容で承りました。担当者より2〜3営業日以内にご連絡いたします。</p>
+        <a href="index.html" class="btn btn-secondary btn-lg">LPトップへ戻る</a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer-inner">
+    <div class="footer-logo">
+      <img src="assets/logo-icon-white.svg" alt="" width="20" height="20">
+      <img src="assets/logo-wordmark-white.svg" alt="BizEat" width="62" height="17">
+    </div>
+    <div class="footer-meta">
+      <p class="footer-links"><a href="https://bizeat.jp/privacy-policy/" target="_blank" rel="noopener">プライバシーポリシー</a><a href="https://bizeat.jp/" target="_blank" rel="noopener">運営会社</a></p>
+      <p class="footer-copyright">© 2026 BizEat Inc.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="ページ上部へ戻る">↑</button>
+
+<script src="script.js"></script>
+<script src="contact.js"></script>
+</body>
+</html>
