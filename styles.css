@@ -688,7 +688,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   position: relative;
   flex: 1 1 300px;
   min-width: 240px;
-  padding: 30px 24px 24px;
+  padding: 42px 24px 24px;
   border-radius: var(--r-lg);
   background: #fff;
   display: flex;
@@ -729,7 +729,17 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
    ========================================================================== */
 
 .faq-cta { background: linear-gradient(165deg, #e6d5b5 0%, #dcc294 40%, #cfb98d 68%, #d9e2b5 100%); padding: 96px 0; }
-.faq-cta-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.faq-cta-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+
+/* PCのみ。見出しを1行目に出し、黒箱を2行目に置いてタブ群と上下を揃える */
+@media (min-width: 901px) {
+  .faq-col { display: contents; }
+  .faq-col .section-title,
+  .faq-list { grid-column: 1; }
+  .cta-box { grid-column: 2; grid-row: 2; }
+  /* 余白をタブ間隔に配り、最後のタブの下端を黒箱に揃える */
+  .faq-list { justify-content: space-between; }
+}
 
 .faq-col .section-title { margin-bottom: 24px; font-size: 30px; }
 
@@ -780,32 +790,58 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   color: #fff;
   box-shadow: var(--shadow-popout);
   transition: transform var(--dur-slow) var(--ease-out);
+  /* 縦に伸びるため中身を上下中央に置く */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .cta-box:hover { transform: translateY(-4px); }
 .cta-box h2 { font-size: 36px; font-weight: 700; line-height: 1.3; margin-bottom: 24px; }
 .cta-box p { font-size: 16px; line-height: 1.65; color: var(--cta-body); max-width: 470px; margin-bottom: 32px; }
-.cta-box-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.cta-box-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 
 /* ==========================================================================
    Footer
    ========================================================================== */
 
-.site-footer { background: var(--dark-800); padding: 40px 0; }
+.site-footer { background: var(--dark-800); padding: 32px 0 24px; }
 .site-footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 60px;
+  align-items: start;
 }
-.footer-logo { display: flex; align-items: center; gap: 8px; height: 24px; }
-.footer-logo img { height: 24px; width: auto; }
-.footer-meta { display: flex; align-items: center; gap: 32px; }
-.footer-links { font-size: 12px; letter-spacing: .02em; }
-.footer-links a { color: rgba(255, 255, 255, .8); text-decoration: underline; transition: color var(--dur-fast) ease; }
-.footer-links a:hover { color: #fff; }
-.footer-links a + a { margin-left: 24px; }
-.footer-copyright { font-size: 12px; letter-spacing: .02em; color: rgba(255, 255, 255, .55); }
+.footer-brand { display: flex; flex-direction: column; gap: 20px; }
+.footer-logo { display: flex; align-items: center; gap: 12px; height: 44px; }
+.footer-logo img { height: 44px; width: auto; }
+.footer-address {
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, .8);
+}
+
+/* フッターの目次。PCは2列、スマホは「≡」で開く折りたたみ */
+.footer-nav-toggle { display: none; }
+.footer-nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 32px; }
+.footer-nav a {
+  font-size: 13px;
+  color: rgba(255, 255, 255, .8);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .15);
+  transition: color var(--dur-fast) ease;
+}
+/* 1行目だけ上余白を消してロゴの上端に揃える */
+.footer-nav a:nth-child(-n+2) { padding-top: 0; }
+.footer-nav a:hover { color: #fff; }
+
+.footer-copyright {
+  grid-column: 1 / -1;
+  justify-self: end;
+  font-size: 12px;
+  letter-spacing: .02em;
+  color: rgba(255, 255, 255, .55);
+}
 
 /* ==========================================================================
    To top
@@ -920,14 +956,43 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
   .cta-box { padding: 36px 24px; }
   .cta-box h2 { font-size: 28px; }
-  .cta-box-buttons { flex-direction: column; }
-  .cta-box-buttons .btn { width: 100%; }
+  .cta-box-buttons { grid-template-columns: 1fr; }
 
   .to-top { right: 16px; bottom: 16px; width: 44px; height: 44px; }
 
-  .site-footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .footer-meta { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .footer-links a + a { margin-left: 0; display: block; margin-top: 4px; }
+  .site-footer-inner { grid-template-columns: 1fr; gap: 28px; }
+
+  /* 目次は「≡」で開く折りたたみに */
+  .footer-nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 32px;
+    padding: 4px 0;
+  }
+  .footer-nav-toggle span {
+    display: block;
+    height: 2px;
+    background: rgba(255, 255, 255, .8);
+    border-radius: 2px;
+    transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-fast) ease;
+  }
+  .footer-nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .footer-nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .footer-nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .footer-nav {
+    grid-template-columns: 1fr;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--dur-slow) var(--ease-out), opacity var(--dur-base) ease;
+  }
+  .footer-nav.is-open { max-height: 520px; opacity: 1; }
+
+  .footer-copyright { justify-self: start; }
 }
 
 /* ==========================================================================

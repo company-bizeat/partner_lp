@@ -61,6 +61,18 @@
     });
   }
 
+  /* Footer nav toggle (mobile) */
+  const footerNavToggle = document.getElementById('footerNavToggle');
+  const footerNav = document.getElementById('footerNav');
+
+  if (footerNavToggle && footerNav) {
+    footerNavToggle.addEventListener('click', () => {
+      const open = footerNavToggle.getAttribute('aria-expanded') === 'true';
+      footerNavToggle.setAttribute('aria-expanded', String(!open));
+      footerNav.classList.toggle('is-open', !open);
+    });
+  }
+
   /* FAQ accordion */
   document.querySelectorAll('.faq-row').forEach((row) => {
     const question = row.querySelector('.faq-question');

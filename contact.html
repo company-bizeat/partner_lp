@@ -32,7 +32,7 @@
     </nav>
 
     <div class="header-ctas">
-      <a href="index.html" class="btn btn-secondary btn-sm">← LPへ戻る</a>
+      <a href="index.html" class="btn btn-secondary btn-sm">← トップページへ戻る</a>
     </div>
 
     <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileNav">
@@ -46,7 +46,7 @@
     <a href="index.html#compare">他媒体との違い</a>
     <a href="index.html#faq">FAQ</a>
     <div class="mobile-nav-ctas">
-      <a href="index.html" class="btn btn-secondary">← LPへ戻る</a>
+      <a href="index.html" class="btn btn-secondary">← トップページへ戻る</a>
     </div>
   </nav>
 </header>
@@ -154,14 +154,35 @@
 
 <footer class="site-footer">
   <div class="container site-footer-inner">
-    <div class="footer-logo">
-      <img src="assets/logo-icon-white.svg" alt="" width="20" height="20">
-      <img src="assets/logo-wordmark-white.svg" alt="BizEat" width="62" height="17">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="assets/logo-icon-white.svg" alt="" width="20" height="20">
+        <img src="assets/logo-wordmark-white.svg" alt="BizEat" width="62" height="17">
+      </div>
+      <address class="footer-address">
+        株式会社ビズイート<br>
+        〒105-0004<br>
+        東京都港区新橋六丁目5番4号401
+      </address>
     </div>
-    <div class="footer-meta">
-      <p class="footer-links"><a href="https://bizeat.jp/privacy-policy/" target="_blank" rel="noopener">プライバシーポリシー</a><a href="https://bizeat.jp/" target="_blank" rel="noopener">運営会社</a></p>
-      <p class="footer-copyright">© 2026 BizEat Inc.</p>
+
+    <div class="footer-nav-wrap">
+      <button class="footer-nav-toggle" id="footerNavToggle" aria-expanded="false" aria-controls="footerNav" aria-label="フッターメニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="footer-nav" id="footerNav" aria-label="フッターナビゲーション">
+        <a href="index.html">TOP</a>
+        <a href="index.html#about">BizEatとは</a>
+        <a href="index.html#features">特徴</a>
+        <a href="index.html#compare">他媒体との違い</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a href="https://bizeat.jp/privacy-policy/" target="_blank" rel="noopener">プライバシーポリシー</a>
+        <a href="https://bizeat.jp/" target="_blank" rel="noopener">運営会社</a>
+      </nav>
     </div>
+
+    <p class="footer-copyright">Copyright © 2026 BizEat Inc.</p>
   </div>
 </footer>
 
