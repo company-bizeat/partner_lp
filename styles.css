@@ -410,6 +410,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .section-title--center { text-align: center; max-width: 760px; margin-inline: auto; }
 
 .section-lead { font-size: 18px; line-height: 1.65; color: var(--ink-700); }
+.section-title, .section-lead { text-wrap: balance; word-break: auto-phrase; }
 
 /* ==========================================================================
    About / 3-step flow
@@ -528,6 +529,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .benefit-card h3 { font-size: 22px; font-weight: 700; line-height: 1.35; color: var(--ink-900); position: relative; }
 .benefit-card p { font-size: 14px; line-height: 1.6; color: var(--ink-700); position: relative; }
+.benefit-card h3, .benefit-card p, .flow-step p { text-wrap: pretty; word-break: auto-phrase; }
 
 /* ==========================================================================
    Compare
@@ -553,7 +555,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .compare-row {
   display: grid;
-  grid-template-columns: 1fr 1.4fr 1fr;
+  grid-template-columns: 0.6fr 1.6fr 1.2fr;
   gap: 8px;
   align-items: center;
   padding: 14px 16px;
@@ -573,6 +575,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .compare-row:not(.compare-row--head):nth-of-type(even) { background: var(--surface); }
 .compare-row:not(.compare-row--head) { transition: background-color var(--dur-fast) ease; }
 .compare-row:not(.compare-row--head):hover { background: var(--green-tint); }
+.compare-row span { text-wrap: balance; }
 .compare-label { color: var(--ink-900); }
 .compare-win { color: var(--alert); font-weight: 700; }
 
@@ -959,7 +962,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .contact-recap h2 { font-size: 22px; font-weight: 700; line-height: 1.4; margin-bottom: 24px; }
 
 .contact-recap-list { list-style: none; margin: 0 0 24px; padding: 0; display: flex; flex-direction: column; gap: 18px; }
-.contact-recap-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 14px; line-height: 1.6; color: var(--cta-body); }
+.contact-recap-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 14px; line-height: 1.6; color: var(--cta-body); text-wrap: pretty; word-break: auto-phrase; }
 .contact-recap-list .request-num { background: rgba(255, 255, 255, .16); color: #fff; }
 .hero-visual-card-inline { display: inline-flex; align-items: center; gap: 6px; }
 .hero-visual-card-inline img { filter: brightness(0) invert(1); flex-shrink: 0; }
