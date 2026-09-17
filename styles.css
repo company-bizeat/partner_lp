@@ -8,6 +8,7 @@
   --green-800: #1b5e20;
   --green-700: #1a3f2c;
   --green-600: #2c6e49;
+  --green-550: #268148;   /* 600 と 500 の中間。比較表の BizEat 列用（白地との明暗差 4.9:1）2026-09-17 */
   --green-500: #1f9447;
   --green-accent: #4aba62;
   --charcoal-green: #2d3b35;
@@ -576,7 +577,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .compare-row:not(.compare-row--head):hover { background: var(--green-tint); }
 .compare-row span { text-wrap: balance; }
 .compare-label { color: var(--ink-900); }
-.compare-win { color: var(--alert); font-weight: 700; }
+.compare-win { color: var(--green-550); font-weight: 700; }   /* 2026-09-17: 警告色の赤からブランドの緑へ。700/600 は本文の黒と見分けにくく、500 は明るすぎたので中間の 550 */
 
 /* ==========================================================================
    Stats (加盟店舗の推移)
@@ -952,7 +953,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   .compare-row:not(.compare-row--head) { padding: 16px; }
   .compare-row:not(.compare-row--head) .compare-label { font-size: 14px; font-weight: 700; color: var(--ink-900); }
   .compare-row:not(.compare-row--head) span:nth-child(2)::before { content: '一般的な予約媒体: '; font-weight: 700; color: var(--ink-500); }
-  .compare-row:not(.compare-row--head) span:nth-child(3)::before { content: 'BizEat: '; font-weight: 700; color: var(--alert); }
+  .compare-row:not(.compare-row--head) span:nth-child(3)::before { content: 'BizEat: '; font-weight: 700; color: var(--green-550); }
 
   .cta-box { padding: 36px 24px; }
   .cta-box h2 { font-size: 28px; }
