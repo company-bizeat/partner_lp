@@ -121,4 +121,44 @@
       closeMobileNav();
     });
   });
+
+  /* 数字のカウントアップ（data-count を持つ要素）。
+     画面に入ったら 0 から目標値まで数え上げる。1要素1回だけ。
+     動きを減らす設定の人には最初から目標値を出す（アニメーションしない）。 */
+  const counters = document.querySelectorAll('[data-count]');
+  if (counters.length) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fmt = (el, v) => el.dataset.comma ? v.toLocaleString('en-US') : String(v);
+
+    const run = (el) => {
+      const goal = parseInt(el.dataset.count, 10);
+      if (!isFinite(goal)) return;
+      const dur = 1100;
+      let t0 = null;
+      const step = (now) => {
+        if (t0 === null) t0 = now;
+        const p = Math.min(1, (now - t0) / dur);
+        /* 終わりに向かって緩める（見ていて落ち着く） */
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(el, Math.round(goal * eased));
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = fmt(el, goal);
+      };
+      requestAnimationFrame(step);
+    };
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      counters.forEach((el) => { el.textContent = fmt(el, parseInt(el.dataset.count, 10)); });
+    } else {
+      counters.forEach((el) => { el.textContent = fmt(el, 0); });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          io.unobserve(e.target);
+          run(e.target);
+        });
+      }, { threshold: 0.4 });
+      counters.forEach((el) => io.observe(el));
+    }
+  }
 })();

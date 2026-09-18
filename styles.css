@@ -673,7 +673,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
    ========================================================================== */
 
 .flow { background: var(--surface); padding: 0 0 96px; }
-.flow .section-head { align-items: flex-start; text-align: left; gap: 16px; }
+/* 他の区画と同じ中央寄せに揃える（2026-09-18） */
+.flow .section-head { max-width: 800px; margin-inline: auto; gap: 20px; }
 
 .flow-steps {
   display: flex;
@@ -733,16 +734,20 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .faq-cta-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
 
 /* PCのみ。見出しを1行目に出し、黒箱を2行目に置いてタブ群と上下を揃える */
-@media (min-width: 901px) {
+/* PC（FAQが2列のとき）のみ。1080px以下の1列化と重ならないよう 1081px から。
+   .faq-col の枠を消して子を直接グリッドに流すため、**子ごとに置き場所を明示する**（落とすと右列へ流れる） */
+@media (min-width: 1081px) {
   .faq-col { display: contents; }
-  .faq-col .section-title,
-  .faq-list { grid-column: 1; }
-  .cta-box { grid-column: 2; grid-row: 2; }
+  .faq-col .eyebrow       { grid-column: 1; grid-row: 1; }
+  .faq-col .section-title { grid-column: 1; grid-row: 2; }
   /* 余白をタブ間隔に配り、最後のタブの下端を黒箱に揃える */
-  .faq-list { justify-content: space-between; }
+  .faq-list               { grid-column: 1; grid-row: 3; justify-content: space-between; }
+  .cta-box                { grid-column: 2; grid-row: 3; }
 }
 
-.faq-col .section-title { margin-bottom: 24px; font-size: 30px; }
+.faq-col .section-title { margin-bottom: 24px; font-size: 30px; text-align: center; }
+/* FAQ区画も他と同じ中央寄せに揃える */
+.faq-col .eyebrow { gap: 10px; margin-bottom: 14px; }
 
 .faq-list { display: flex; flex-direction: column; gap: 12px; }
 
