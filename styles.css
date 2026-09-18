@@ -539,9 +539,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .compare { background: var(--surface); padding: 0 0 96px; }
 .compare-inner { display: flex; align-items: center; gap: 100px; }
-/* 左のコピーは左寄せなので、英字ラベルも左端に揃える（.eyebrow の既定は中央寄せ） */
 .compare-copy { flex: 0 0 auto; width: 450px; display: flex; flex-direction: column; gap: 24px; }
-.compare-copy .eyebrow { align-items: flex-start; }
 
 .compare-table {
   flex: 1 1 580px;
