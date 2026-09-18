@@ -330,7 +330,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   letter-spacing: -.01em;
 }
 
-.hero-lead { font-size: 18px; line-height: 1.67; color: var(--ink-700); }
+.hero-lead { font-size: 18px; line-height: 1.67; color: var(--ink-700); text-wrap: pretty; word-break: auto-phrase; }
 
 .hero-ctas { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
@@ -412,6 +412,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .section-lead { font-size: 18px; line-height: 1.65; color: var(--ink-700); }
 .section-title, .section-lead { text-wrap: balance; word-break: auto-phrase; }
+/* 折り返してよい位置を指定する（決め打ちの <br> は使わない）。1かたまり10文字以内が目安 */
+.nobr { white-space: nowrap; }
 
 /* ==========================================================================
    About / 3-step flow
@@ -465,7 +467,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .flow-3step-body { display: flex; flex-direction: column; gap: 12px; width: 100%; align-items: flex-start; }
 .flow-3step-title { font-size: 24px; font-weight: 600; color: #fff; }
-.flow-3step-desc { font-size: 14px; line-height: 1.4; color: rgba(255, 255, 255, .75); }
+.flow-3step-desc { font-size: 14px; line-height: 1.4; color: rgba(255, 255, 255, .75); text-wrap: pretty; word-break: auto-phrase; }
 .flow-3step-card--accent .flow-3step-desc { color: rgba(255, 255, 255, .85); }
 .flow-3step-arrow { flex-shrink: 0; align-self: center; font-size: 40px; font-weight: 700; color: var(--green-600); line-height: 1; }
 
@@ -537,7 +539,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .compare { background: var(--surface); padding: 0 0 96px; }
 .compare-inner { display: flex; align-items: center; gap: 100px; }
+/* 左のコピーは左寄せなので、英字ラベルも左端に揃える（.eyebrow の既定は中央寄せ） */
 .compare-copy { flex: 0 0 auto; width: 450px; display: flex; flex-direction: column; gap: 24px; }
+.compare-copy .eyebrow { align-items: flex-start; }
 
 .compare-table {
   flex: 1 1 580px;
@@ -738,8 +742,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
    .faq-col の枠を消して子を直接グリッドに流すため、**子ごとに置き場所を明示する**（落とすと右列へ流れる） */
 @media (min-width: 1081px) {
   .faq-col { display: contents; }
-  .faq-col .eyebrow       { grid-column: 1; grid-row: 1; }
-  .faq-col .section-title { grid-column: 1; grid-row: 2; }
+  /* 見出しの二段は区画の全幅に出して、ページの中央で揃える（左列の中央だと左に寄って見える） */
+  .faq-col .eyebrow       { grid-column: 1 / -1; grid-row: 1; }
+  .faq-col .section-title { grid-column: 1 / -1; grid-row: 2; }
   /* 余白をタブ間隔に配り、最後のタブの下端を黒箱に揃える */
   .faq-list               { grid-column: 1; grid-row: 3; justify-content: space-between; }
   .cta-box                { grid-column: 2; grid-row: 3; }
@@ -948,6 +953,10 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   .hero-ctas .btn { flex: 1 1 auto; }
 
   .hero-visual { margin-bottom: 8px; }
+
+  /* 業態チップは2列の等幅に。内容幅のままだと行ごとに境目がずれ、最後の1個だけ全幅に伸びる */
+  .logo-strip { gap: 10px; }
+  .logo-chip { flex: 1 1 calc(50% - 5px); max-width: calc(50% - 5px); min-width: 0; padding: 10px 12px; font-size: 13px; }
 
   .about, .flow, .compare, .request { padding-bottom: 64px; }
   .about { padding-top: 56px; }
