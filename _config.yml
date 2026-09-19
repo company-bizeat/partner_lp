@@ -1,0 +1,5 @@
+# GitHub Pages（Jekyll）の設定。
+# README.md は実装メモとFAQの但し書きを含むため、サイトには公開しない。
+# リポジトリ内には残るので、GitHub の画面では読める。
+exclude:
+  - README.md
