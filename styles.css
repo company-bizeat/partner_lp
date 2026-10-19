@@ -259,6 +259,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* 法人LPと同じ書き方に置き換え（下）
 .mobile-nav {
   display: none;
   flex-direction: column;
@@ -271,6 +272,34 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   transition: max-height var(--dur-slow) var(--ease-out), opacity var(--dur-base) ease;
 }
 .mobile-nav.is-open { max-height: 480px; opacity: 1; }
+*/
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  /* 閉じている間は上下の余白と上線も 0 にする。max-height:0 だけでは計 33px が残る */
+  padding: 0 clamp(20px, 6vw, 96px);
+  border-top: 0 solid var(--border);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;   /* 閉じている間はフォーカスも読み上げも受けない */
+  transition: max-height var(--dur-slow) var(--ease-out),
+              padding-top var(--dur-slow) var(--ease-out),
+              padding-bottom var(--dur-slow) var(--ease-out),
+              border-top-width var(--dur-slow) var(--ease-out),
+              opacity var(--dur-base) ease,
+              visibility 0s linear var(--dur-slow);
+}
+.mobile-nav.is-open {
+  max-height: 480px;
+  padding-top: 8px;
+  padding-bottom: 24px;
+  border-top-width: 1px;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
 .mobile-nav a { padding: 12px 4px; font-size: 15px; font-weight: 600; border-radius: var(--r-sm); }
 .mobile-nav a:hover { background: var(--page-bg); }
 .mobile-nav-ctas { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
