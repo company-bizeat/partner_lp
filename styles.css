@@ -979,6 +979,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   .header-inner { padding-block: 0; }
   .brand-name { font-size: 22px; }
   .brand-pill { display: none; }
+  /* 360px 前後で見出しが左右にはみ出さない大きさにする。
+     FAQ の見出しは .faq-col .section-title の 30px が優先されるので、並べて書いて同じ大きさに揃える */
+  .section-title, .faq-col .section-title { font-size: 26px; }
 
   .hero { padding: 40px 0 56px; }
   .hero-copy h1 { font-size: 30px; line-height: 1.35; }
@@ -1041,6 +1044,14 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   .footer-nav.is-open { max-height: 520px; opacity: 1; }
 
   .footer-copyright { justify-self: start; }
+}
+
+/* 375px 未満（初代 iPhone SE の 320px、Android の 360px など）。見出しの句「決済プラットフォームです。」（13文字）は 26px だと 331px で、
+   320px では左右の余白 20px ずつを除いた 280px に入らず両端が切れ、374px まで余白に食い込む（375px でちょうど収まる）。21px なら 270px。
+   見出し（h2）より中のカードの見出し（h3・22px）が大きくならないよう、h3 も一緒に下げる */
+@media (max-width: 374px) {
+  .section-title, .faq-col .section-title { font-size: 21px; }
+  .benefit-card h3 { font-size: 20px; }
 }
 
 /* ==========================================================================
