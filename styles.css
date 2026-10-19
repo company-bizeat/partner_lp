@@ -1101,6 +1101,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .field-row .field { margin-bottom: 0; }
+/* 2列の行の下にも、1項目と同じ 20px の余白をとる */
+.field-row { margin-bottom: 20px; }
 
 .field label { font-size: 14px; font-weight: 700; color: var(--ink-900); }
 .req { font-size: 11px; font-weight: 700; color: var(--green-600); background: var(--green-tint); padding: 2px 8px; border-radius: var(--r-pill); vertical-align: middle; }
@@ -1207,7 +1209,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   .contact-layout { grid-template-columns: 1fr; }
   .contact-recap { position: static; }
   .thanks-panel { grid-column: 1; }
-  .field-row { grid-template-columns: 1fr; gap: 0; }
+  /* .field-row { grid-template-columns: 1fr; gap: 0; } */
+  .field-row { grid-template-columns: 1fr; gap: 20px; }
 }
 
 @media (max-width: 640px) {
