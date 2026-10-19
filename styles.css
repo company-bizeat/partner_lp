@@ -1002,8 +1002,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   .compare-row--head { display: none; }
   .compare-row:not(.compare-row--head) { padding: 16px; }
   .compare-row:not(.compare-row--head) .compare-label { font-size: 14px; font-weight: 700; color: var(--ink-900); }
-  .compare-row:not(.compare-row--head) span:nth-child(2)::before { content: '一般的な予約媒体: '; font-weight: 700; color: var(--ink-500); }
-  .compare-row:not(.compare-row--head) span:nth-child(3)::before { content: 'BizEat: '; font-weight: 700; color: var(--green-550); }
+  /* 列見出しを消すぶん、各セルの先頭に列名を付ける。直下の span だけに当てる（セルの中に .nobr を入れ子にしても列名が重複しないように） */
+  .compare-row:not(.compare-row--head) > span:nth-child(2)::before { content: '一般的な予約媒体: '; font-weight: 700; color: var(--ink-500); }
+  .compare-row:not(.compare-row--head) > span:nth-child(3)::before { content: 'BizEat: '; font-weight: 700; color: var(--green-550); }
 
   .cta-box { padding: 36px 24px; }
   .cta-box h2 { font-size: 28px; }
